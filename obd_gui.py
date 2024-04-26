@@ -316,20 +316,20 @@ class OBDLoadingPanel(wx.Panel):
         image = wx.Image(BACKGROUND_FILENAME) 
         width, height = wx.GetDisplaySize() 
         image = image.Scale(width, height, wx.IMAGE_QUALITY_HIGH)
-        self.bitmap = wx.BitmapFromImage(image) 
+        self.bitmap = wx.Bitmap(image) 
         self.Bind(wx.EVT_PAINT, self.OnPaint)
 
         # Logo
         bitmap = wx.Bitmap(LOGO_FILENAME)
         width, height = bitmap.GetSize()
-        image = wx.ImageFromBitmap(bitmap)
-        image = image.Scale(width/6, height/6, wx.IMAGE_QUALITY_HIGH)
-        bitmap = wx.BitmapFromImage(image)
+        image = bitmap.ConvertToImage()
+        image = image.Scale(round(width/6), round(height/6), wx.IMAGE_QUALITY_HIGH)
+        bitmap = wx.Bitmap(image)
         control = wx.StaticBitmap(self, wx.ID_ANY, bitmap)
         control.SetPosition((10, 10)) 
 
         # Create an accelerator table
-        cid = wx.NewId()
+        cid = wx.NewIdRef()
         self.Bind(wx.EVT_MENU, self.onCtrlC, id=cid)
         self.accel_tbl = wx.AcceleratorTable([ 
                 (wx.ACCEL_CTRL, ord('C'), cid), 
@@ -429,7 +429,7 @@ class OBDFrame(wx.Frame):
         image = wx.Image(BACKGROUND_FILENAME) 
         width, height = wx.GetDisplaySize() 
         image = image.Scale(width, height, wx.IMAGE_QUALITY_HIGH)
-        self.bitmap = wx.BitmapFromImage(image) 
+        self.bitmap = wx.Bitmap(image) 
         self.Bind(wx.EVT_PAINT, self.OnPaint)
 
         self.panelLoading = OBDLoadingPanel(self)
@@ -577,9 +577,9 @@ class OBDApp(wx.App):
 
         return True
 
-    def FilterEvent(self, event):
-        if event.GetEventType == wx.KeyEvent:
-            pass
+#    def FilterEvent(self, event):
+#        if event.GetEventType == wx.KeyEvent:
+#            pass
 
 #-------------------------------------------------------------------------------
 

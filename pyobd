@@ -35,7 +35,7 @@ import sys
 import serial
 import platform
 import time
-import ConfigParser #safe application configuration
+import configparser #safe application configuration
 import webbrowser #open browser from python
 
 from obd2_codes import pcodes
@@ -347,7 +347,7 @@ class MyApp(wx.App):
         tID = wx.NewId()
 
         #read settings from file
-        self.config = ConfigParser.RawConfigParser()
+        self.config = configparser.RawConfigParser()
                 
         #print platform.system()
         #print platform.mac_ver()[]        

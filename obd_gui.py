@@ -494,7 +494,7 @@ class OBDFrame0(wx.Frame):
         dc.DrawBitmap(self.bitmap, 0, 0)     
 
 #-------------------------------------------------------------------------------
-
+'''
 class OBDSplashScreen(wx.SplashScreen):
     """
     Splash screen.
@@ -506,14 +506,14 @@ class OBDSplashScreen(wx.SplashScreen):
         """
         self.frame0 = frame0
 
-        image = wx.Image(SPLASHSCREEN_FILENAME)
-        width, height = wx.GetDisplaySize() 
-        image = image.Scale(width, height, wx.IMAGE_QUALITY_HIGH)
-        bitmap = wx.BitmapFromImage(image) 
+        #image = wx.Image(SPLASHSCREEN_FILENAME)
+        #width, height = wx.GetDisplaySize() 
+        #image = image.Scale(width, height, wx.IMAGE_QUALITY_HIGH)
+        #bitmap = wx.BitmapFromImage(image) 
         
-        splashStyle = wx.SPLASH_CENTRE_ON_SCREEN | wx.SPLASH_TIMEOUT
-        splashDuration = SPLASHSCREEN_TIMEOUT
-        wx.SplashScreen.__init__(self, bitmap, splashStyle, splashDuration, parent)
+        #splashStyle = wx.SPLASH_CENTRE_ON_SCREEN | wx.SPLASH_TIMEOUT
+        #splashDuration = SPLASHSCREEN_TIMEOUT
+        #wx.SplashScreen.__init__(self, bitmap, splashStyle, splashDuration, parent)
 
         self.Bind(wx.EVT_CLOSE, self.OnExit)
         wx.Yield()
@@ -535,7 +535,7 @@ class OBDSplashScreen(wx.SplashScreen):
             del self.frame0 
         
         evt.Skip()          
-
+'''
 #-------------------------------------------------------------------------------
 
 class OBDApp(wx.App):

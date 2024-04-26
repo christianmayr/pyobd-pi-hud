@@ -17,7 +17,7 @@ class OBD_Capture():
 
     def connect(self):
         portnames = scanSerial()
-        print portnames
+        print(portnames)
         for port in portnames:
             self.port = obd_io.OBDPort(port, None, 2, 2)
             if(self.port.State == 0):
@@ -27,7 +27,7 @@ class OBD_Capture():
                 break
 
         if(self.port):
-            print "Connected to "+self.port.port.name
+            print("Connected to "+self.port.port.name)
             
     def is_connected(self):
         return self.port
@@ -80,6 +80,6 @@ if __name__ == "__main__":
     o.connect()
     time.sleep(3)
     if not o.is_connected():
-        print "Not connected"
+        print("Not connected")
     else:
         o.capture_data()

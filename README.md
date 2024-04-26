@@ -39,10 +39,10 @@ Before proceeding, run:
 #  sudo reboot
 
 Install these components using the command:
-#  sudo apt-get install python-serial
-#  sudo apt-get install bluetooth bluez-utils blueman
-#  sudo apt-get install python-wxgtk2.8 python-wxtools wx2.8-i18n libwxgtk2.8-dev
-#  sudo apt-get install git-core
+#  sudo apt install python3-serial
+#  sudo apt install wxpython-tools
+#  sudo apt install cl-py-configparser
+
 #  sudo reboot 
 
 Next, download the OBD-Pi Software direct from GitHub (https://github.com/Pbartek/pyobd-pi.git)

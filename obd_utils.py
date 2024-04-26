@@ -7,11 +7,11 @@ def scanSerial():
  # Enable Bluetooh connection
     for i in range(10):
       try:
-		s = serial.Serial("/dev/rfcomm"+str(i))
-		available.append( (str(s.port)))
-		s.close()   # explicit close 'cause of delayed GC in java
+        s = serial.Serial("/dev/rfcomm"+str(i))
+        available.append( (str(s.port)))
+        s.close()   # explicit close 'cause of delayed GC in java
       except serial.SerialException:
-		pass
+        pass
  # Enable USB connection
     for i in range(256):
       try:

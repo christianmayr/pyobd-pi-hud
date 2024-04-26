@@ -244,7 +244,7 @@ class MyApp(wx.App):
         def sensor_toggle(e):
             sel = e.m_itemIndex
             state = self.senprod.active[sel]
-            print sel, state
+            print(sel, state)
             if   state == 0:
                 self.senprod.on(sel)
                 self.sensors.SetStringItem(sel,1,"1")

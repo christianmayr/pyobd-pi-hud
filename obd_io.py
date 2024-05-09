@@ -100,14 +100,18 @@ class OBDPort:
          
          try:
             self.send_command("atz")   # initialize
+            debug_display(self._notify_window, 1, "atz sent")
             time.sleep(1)
          except serial.SerialException:
             self.State = 0
-            return None
+            pass
             
          self.ELMver = self.get_result()
+         debug_display(self._notify_window, 1, "result received")
+         
          if(self.ELMver is None):
             self.State = 0
+            debug_display(self._notify_window, 1, "None received")
             return None
          
          debug_display(self._notify_window, 2, "atz response:" + self.ELMver)
@@ -139,8 +143,8 @@ class OBDPort:
              self.port.flushOutput()
              self.port.flushInput()
              for c in cmd:
-                 self.port.write(c)
-             self.port.write("\r\n")
+                 self.port.write(c.encode())
+             self.port.write("\r\n".encode())
              #debug_display(self._notify_window, 3, "Send command:" + cmd)
 
      def interpret_result(self,code):
@@ -177,7 +181,7 @@ class OBDPort:
          if self.port is not None:
              buffer = ""
              while 1:
-                 c = self.port.read(1)
+                 c = str(self.port.read(1))
                  if len(c) == 0:
                     if(repeat_count == 5):
                         break
